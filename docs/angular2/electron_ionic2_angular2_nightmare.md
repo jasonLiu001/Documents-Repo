@@ -1,8 +1,8 @@
-## `nightmare`如何嵌入到`angular2`应用中执行
+## `Ionic`中调用`nightmare`库
 
-1. 新建`angular2`应用
+1. 新建`angular2 ionic`应用
 
-2. 通过`angular universal`库来完成`angular2`服务端的开发，服务端的代码运行，一定要依赖于`web`服务器环境？直接用`node`来启动或执行`angular uninversal`应用不可以？
+2. 通过`angular universal`库来完成`angular2`服务端的开发，服务端的代码运行，一定要依赖于`web`服务器环境？直接用`node`来启动或执行`angular uninversal`应用不可以？不可以，这个`universal`依赖于服务器执行环境
 
 3. 通过按钮调用`nightmare`来执行特定的操作
 
@@ -11,6 +11,10 @@
    遇到问题：`nightmare`是一个库，它并不能在浏览器环境下直接运行，准确的说，它可以在后台环境中运行，如`node`命令行环境，或者`server`端服务器环境。所以想成功调用`nightmare`并执行，就需要一个类似于`node`这样的宿主环境来执行，`ionic`和`electron`宿主环境是否满足这样的执行要求呢？
 
    > 目前正在研究中，发现把`nightmare`的包`import`到`ionic`项目中时，编译报错，提示`Uncaught Error: Cannot find module "debug"`，难道说`ionic`这样的宿主环境不能执行`nightmare` ？希望能够找到比较好的解决方案
+
+## 在`Electron`中调用`nightmare`方法
+
+[参考文档](https://github.com/segmentio/nightmare/issues/856)
 
 ## `angular2`客户端技术解析
 
