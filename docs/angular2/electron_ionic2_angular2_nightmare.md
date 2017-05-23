@@ -12,6 +12,14 @@
 
    > 目前正在研究中，发现把`nightmare`的包`import`到`ionic`项目中时，编译报错，提示`Uncaught Error: Cannot find module "debug"`，难道说`ionic`这样的宿主环境不能执行`nightmare` ？希望能够找到比较好的解决方案
 
+4. ~~目前可能可行的解决方案：通过`electron`加载`ionic`，`ionic`中调用`nightmare`，`ionic`的`app`不要通过`angular`来写，用纯`javascript`来编写`ionic`应用。[参考文档](https://www.raymondcamden.com/2015/07/23/some-initial-thoughts-on-building-desktop-apps-with-ionic-and-electron)~~
+
+5. 通过服务端和客户端的方式来配置即可，服务端采用`node`下的`express`，客户端技术随便选择，`ionic`或者`electron`都行
+
+## `ionic`的app转换成`electron`类型的app
+
+[参考文档](https://blog.thecodecampus.de/setup-ionic-2-electron-typescript-angular2/)
+
 ## 在`Electron`中调用`nightmare`方法
 
 [参考文档](https://github.com/segmentio/nightmare/issues/856)
@@ -31,4 +39,7 @@
 使用`angular2`写服务端应用的目的是为了解决上面`angular2`应用在客户端应用时出现的一些弊端，参照上面的说明，可以实现对`seo`友好，使用的到的是`angular2`的一个库`Agular Universal`
 
 1. `Server-Side Rendering in Angular 2 with Angular Universal`[参考文档](https://scotch.io/tutorials/server-side-rendering-in-angular-2-with-angular-universal)
-2. ​
+
+## 写法
+
+1. 采用`api`的形式来访问，选择存在明显的的问题，服务的部署问题，在`pc`端还好，能直接部署服务，如果通过`ionic`部署到移动端，那么访问服务的问题，如何解决？
