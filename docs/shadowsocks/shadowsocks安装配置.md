@@ -89,24 +89,31 @@
    | method        | 默认: “aes-256-cfb”，见 [Encryption](https://github.com/shadowsocks/shadowsocks/wiki/Encryption) |
    | fast_open     | 开启或关闭 [TCP_FASTOPEN](https://github.com/shadowsocks/shadowsocks/wiki/TCP-Fast-Open), 填true / false，需要服务端支持 |
 
-7. 启动`shadowsocks`
+7. 防火墙配置
+
+   ```shell
+   iptables -A INPUT -p tcp –dport 443 -j ACCEPT。//443为示例端口，你可以改为你需要的。
+   重启防火墙：service iptables restart
+   ```
+
+8. 启动`shadowsocks`
 
    - 前端启动：`ssserver -c /etc/shadowsocks.json`；
    - 后端启动：`ssserver -c /etc/shadowsocks.json -d start`；
    - 停止：`ssserver -c /etc/shadowsocks.json -d stop`；
    - 重启(修改配置要重启才生效)：`ssserver -c /etc/shadowsocks.json -d restart`
 
-8. 设置开机启动 
+9. 设置开机启动 
      - 在终端输入`vi /etc/rc.local`，
      - 把里面最后的带有ssserver的一大段默认的代码删除掉，
      - 再把`ssserver -c /etc/shadowsocks.json -d start`加进去，
      - 按`wq`保存退出。
 
-9. 优化`shadowsock`
+10. 优化`shadowsock`
 
      https://shadowsocks.org/en/config/advanced.html
 
-10. 测试服务器是否正常工作
+11. 测试服务器是否正常工作
 
      在客户端所在的机器上运行以下命令
 
@@ -116,7 +123,7 @@
      telnet 45.55.108.80 22
      ```
 
-11. 如果出现"拒绝连接"情况解决
+12. 如果出现"拒绝连接"情况解决
 
       + 查看SSH对应的22端口的绑定IP是什么`netstat -anp | grep 22`
 
@@ -131,7 +138,7 @@
 
         这里面出现了两个IP地址：`192.241.218.88`和`10.12.0.5`，这时可用把`shadowsocks.json`中的`server`节点替换成其中任意一个并测试，哪个可用正常使用，就用哪个。
 
-12. 优化
+13. 优化
 
       ## Optimize the shadowsocks server on Linux
 
