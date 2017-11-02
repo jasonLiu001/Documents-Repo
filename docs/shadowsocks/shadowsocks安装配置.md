@@ -1,5 +1,11 @@
 ## CentOS下安装`Shadowsocks`
 
+> 可参考文档地址：
+>
+> 环境搭建：https://www.iwwenbo.com/0-1-shadowsocks-start/
+>
+> `shadowsocks`原理：http://blog.021xt.cc/archives/98
+
 1. 申请虚拟主机
 
    `https://cloud.digitalocean.com`
