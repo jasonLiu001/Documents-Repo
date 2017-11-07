@@ -51,7 +51,7 @@
 
    ```json
    {
-       "server":"my_server_ip",  
+       "server":"my_server_ip",  //内网ip地址
        "server_port":8381,
        "local_address":"127.0.0.1",
        "local_port":1080,
@@ -68,7 +68,7 @@
 
    ```json
    {
-       "server":"my_server_ip",  #填入你的IP地址
+       "server":"my_server_ip",  #填入你的内网IP地址
        "local_address": "127.0.0.1",
        "local_port":1080,
        "port_password": {
@@ -117,7 +117,7 @@
 
 10. 优化`shadowsock`
 
-     https://shadowsocks.org/en/config/advanced.html
+    https://shadowsocks.org/en/config/advanced.html
 
 11. 测试服务器是否正常工作
 
