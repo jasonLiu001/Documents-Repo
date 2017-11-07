@@ -15,13 +15,13 @@
 2. 配置编译环境
 
    ```shell
-   yum groupinstall 'Development Tools'
+   sudo yum groupinstall 'Development Tools'
    ```
 
 3. 安装`git`(可选项)
 
    ```shell
-   yum install git
+   sudo yum install git
    ```
 
 4. 安装`pip`工具
@@ -38,7 +38,7 @@
 5. 安装`Shadowsockets`
 
    ```shell
-   pip install shadowsocks
+   sudo pip install shadowsocks
    ```
 
 6. 在`/etc`目录下新建`shadowsocks`配置文件
@@ -102,24 +102,56 @@
    重启防火墙：service iptables restart
    ```
 
-8. 启动`shadowsocks`
+8. 服务端启动`shadowsocks`
 
    - 前端启动：`ssserver -c /etc/shadowsocks.json`；
    - 后端启动：`ssserver -c /etc/shadowsocks.json -d start`；
    - 停止：`ssserver -c /etc/shadowsocks.json -d stop`；
    - 重启(修改配置要重启才生效)：`ssserver -c /etc/shadowsocks.json -d restart`
 
-9. 设置开机启动 
+9. 客户端(CentOS)使用
+
+     * The client is started with the `ss-local` command. To start it using the configuration file `/etc/shadowsocks/config.json`
+
+       ```shell
+       $ ss-local -c /etc/shadowsocks/config.json
+       ```
+
+     * 安装[`ProxyChains`](https://github.com/rofl0r/proxychains-ng)
+
+     * 使用`ProxyChains`实现系统全局代理
+
+       ```shell
+       #编辑配置文件
+       vi /etc/proxychains.conf
+
+       #在文件末尾添加本地shadowsocks代理
+       #socks4         127.0.0.1 9050  ##这个地方要注释掉，否则会按照链式代理模式走
+       socks5  127.0.0.1 1080
+
+       #链式代理模式：如果你配置了两个代理，那么代理的路径就是：本机--代理1--代理2--目的主机
+       ```
+
+     * 或者在`~/bash_profile`中配置全局`socks5`代理
+
+       ```shell
+       $ export all_proxy="socks5://your.proxy:1080"
+       ```
+
+       ​
+
+10. 设置开机启动 
+
      - 在终端输入`vi /etc/rc.local`，
      - 把里面最后的带有ssserver的一大段默认的代码删除掉，
      - 再把`ssserver -c /etc/shadowsocks.json -d start`加进去，
      - 按`wq`保存退出。
 
-10. 优化`shadowsock`
+11. 优化`shadowsock`
 
-    https://shadowsocks.org/en/config/advanced.html
+     https://shadowsocks.org/en/config/advanced.html
 
-11. 测试服务器是否正常工作
+12. 测试服务器是否正常工作
 
      在客户端所在的机器上运行以下命令
 
@@ -129,7 +161,7 @@
      telnet 45.55.108.80 22
      ```
 
-12. 如果出现"拒绝连接"情况解决
+13. 如果出现"拒绝连接"情况解决
 
       + 查看SSH对应的22端口的绑定IP是什么`netstat -anp | grep 22`
 
@@ -144,7 +176,7 @@
 
         这里面出现了两个IP地址：`192.241.218.88`和`10.12.0.5`，这时可用把`shadowsocks.json`中的`server`节点替换成其中任意一个并测试，哪个可用正常使用，就用哪个。
 
-13. 优化
+14. 优化
 
       ## Optimize the shadowsocks server on Linux
 
