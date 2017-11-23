@@ -5,13 +5,13 @@
 1. 添加epel源
 
    ```shell
-   yum -y install epel-release
+   sudo yum -y install epel-release
    ```
 
 2. 安装`nginx`
 
    ```shell
-   yum install nginx -y
+   sudo yum install nginx -y
    ```
 
 3. 添加防火墙的例外规则
@@ -22,15 +22,16 @@
    sudo firewall-cmd --reload
    ```
  
-4. 启动`nginx`
+4. 启动`nginx`     
    
    ```shell
-    systemctl start nginx 
-    systemctl enable nginx
+    # 立即启动nginx
+    systemctl start nginx 
+    # 设置nginx开机启动
+    systemctl enable nginx
    ```
    
 5. 查看`nginx`状态
-
    ```shell
    systemctl status nginx
    ```
