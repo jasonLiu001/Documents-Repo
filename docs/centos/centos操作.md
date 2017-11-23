@@ -16,11 +16,11 @@
 
 3. 添加防火墙的例外规则
 
-```shell
-sudo firewall-cmd --permanent --zone=public --add-service=http 
-sudo firewall-cmd --permanent --zone=public --add-service=https
-sudo firewall-cmd --reload
-```
+   ```shell
+   sudo firewall-cmd --permanent --zone=public --add-service=http 
+   sudo firewall-cmd --permanent --zone=public --add-service=https
+   sudo firewall-cmd --reload
+   ```
  
 4. 启动`nginx`
 
