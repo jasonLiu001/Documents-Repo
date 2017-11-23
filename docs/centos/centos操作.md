@@ -23,7 +23,7 @@
    ```
  
 4. 启动`nginx`
-
+   
    ```shell
     systemctl start nginx 
     systemctl enable nginx
