@@ -1,6 +1,6 @@
-`iptables`防火墙
 
-搭建web服务器
+## CentOS 7 下安装Nginx服务器
+步骤如下：
 
 1. 添加epel源
 
@@ -14,22 +14,23 @@
    yum install nginx -y
    ```
 
-   ​
+3. 添加防火墙的例外规则
 
-3. 启动`nginx`
+```shell
+sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+```
+ 
+4. 启动`nginx`
 
    ```shell
-   service nginx start
+    systemctl start nginx 
+    systemctl enable nginx
    ```
-
-4. 自动启用`ngnix`
-
-   ```shell
-   systemctl enable nginx
-   ```
-
+   
 5. 查看`nginx`状态
 
    ```shell
-   service nginx status
+   systemctl status nginx
    ```
