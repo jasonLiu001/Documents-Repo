@@ -2,7 +2,13 @@
 
 搭建web服务器
 
-1. 安装`nginx`
+1. 添加epel源
+
+   ```shell
+   yum -y install epel-release
+   ```
+
+2. 安装`nginx`
 
    ```shell
    yum install nginx -y
@@ -10,28 +16,20 @@
 
    ​
 
-2. 启动`nginx`
+3. 启动`nginx`
 
    ```shell
    service nginx start
    ```
 
-3. 自动启用`ngnix`
+4. 自动启用`ngnix`
 
    ```shell
    systemctl enable nginx
    ```
 
-4. 查看`nginx`状态
+5. 查看`nginx`状态
 
    ```shell
    service nginx status
-   ```
-
-   ​
-
-epel源安装
-
-   ```shell
-   yum -y install epel-release
    ```
