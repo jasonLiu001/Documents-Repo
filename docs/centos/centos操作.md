@@ -30,7 +30,7 @@
 
    ​
 
-epel包安装
+epel源安装
 
    ```shell
    yum -y install epel-release
