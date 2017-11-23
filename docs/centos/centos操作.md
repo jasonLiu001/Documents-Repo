@@ -22,8 +22,8 @@
    sudo firewall-cmd --reload
    ```
  
-4. 启动`nginx`     
-   
+4. 启动`nginx`
+
    ```shell
     # 立即启动nginx
     systemctl start nginx 
