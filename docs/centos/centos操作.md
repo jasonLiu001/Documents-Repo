@@ -31,6 +31,7 @@
    ​
 
 epel包安装
- ```shell
- yum -y install epel-release
- ```
+
+   ```shell
+   yum -y install epel-release
+   ```
